@@ -1,18 +1,43 @@
-//expressモジュールの読み込み
-const express = require('express')
-//expressのインスタンス化
-const app = express()
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
 
-//8080番ポートでサーバーを待ちの状態にする。
-//またサーバーが起動したことがわかるようにログを出力する
-app.listen(8080, () => {
-  console.log("サーバー起動中");
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var helloRouter = require('./routes/hello');
+
+var app = express();
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/hello', helloRouter);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
 });
 
-//GETリクエストの設定
-//'/get'でアクセスされた時に、JSONとログを出力するようにする
-app.get('/', (req, res)=> {
-    res.json({ "pet": "dog"});
-    console.log('GETリクエストを受け取りました')
-    res.end();
-})
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+module.exports = app;
