@@ -11,6 +11,17 @@ var samplesApiRouter = require('./routes/api/samples');
 
 var app = express();
 
+// session
+const session = require('express-session');
+
+var sessionOptions = {
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {maxAge: 60*60*1000}
+}
+app.use(session(sessionOptions));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
