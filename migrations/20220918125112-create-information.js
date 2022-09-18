@@ -24,6 +24,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       delete_flag: {
+        default:0,
         type: Sequelize.INTEGER
       },
       createdAt: {
