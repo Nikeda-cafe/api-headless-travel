@@ -1,6 +1,42 @@
 <%- include('../components/_header.ejs') %>
 <div class="container mt-5">
-    <h1>information List</h1>
+    <h1 class="mb-4"><%= metaData.h1 %></h1>
+    <form class=" mb-4">
+        <div class="d-flex form-inline mb-4">
+            <div class="input-group mr-4">
+                <div class="input-group-prepend">
+                <span class="input-group-text">ID</span>
+                </div>
+                <input type="text" class="form-control">
+            </div>
+            <div class="input-group mr-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">カテゴリ</span>
+                </div>
+                <select class="custom-select">
+                    <option selected></option>
+                    <option value="1">リリース</option>
+                    <option value="2">イベント</option>
+                    <option value="3">社内</option>
+                </select>
+            </div>
+            <div class="input-group mr-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">公開ステータス</span>
+                </div>
+                <select class="custom-select">
+                    <option selected></option>
+                    <option value="1">公開済み</option>
+                    <option value="2">非公開</option>
+                </select>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input name="emergency" type="checkbox" class="custom-control-input" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1">緊急フラグ</label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2 d-block">検索</button>
+    </form>
     <table class="table">
         <thead class="thead-light">
             <tr>
@@ -21,12 +57,12 @@
                 <td><%= obj.title %></td>
                 <td><%= obj.status === 1 ? '公開済み' : '非公開' %></td>
                 <td <% if (obj.emergency_flag === 1) { %> class="alert alert-danger" <% } %>    
-                ><%= obj.emergency_flag === 1 ? '緊急':'' %>
+                ><%= obj.emergency_flag === 1 ? '緊急':'-' %>
                 </td>
                 <td><%= obj.createdAt %></td>
                 <td>
                     <a href="/information/edit/?id=<%= obj.id %>">
-                        <button class="btn btn-primary">編集する</button>
+                        <button class="btn btn-outline-secondary">編集する</button>
                     </a>
                 </td>
             </tr>

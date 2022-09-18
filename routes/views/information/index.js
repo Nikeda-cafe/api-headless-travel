@@ -6,13 +6,20 @@ var router = express.Router();
 
 // list 
 router.get('/', function(req, res, next) {
+    const metaData = {
+        title:'お知らせ一覧',
+        h1: 'お知らせ一覧',
+    }
     const conditionId = req.query.id;
-    const attributes = { attributes: ["id", "group_id", "title", "status", "emergency_flag", ["DATE_FORMAT(createdAt, '%Y年%m月%d日')", "createdAt"]] }
+    const attributes = { 
+        attributes: ["id", "group_id", "title", "status", "emergency_flag", ["DATE_FORMAT(createdAt, '%Y年%m月%d日')", "createdAt"]] 
+    }
     const wheres = conditionId ? { where: { id: conditionId } } : {}
     const conditions = Object.assign(attributes,wheres)
     db.information.findAll(conditions).then(result => {
         const data = {
-            list: result
+            list: result,
+            metaData: metaData
         }
         res.render('information/index',data)
     })
@@ -37,7 +44,7 @@ router.post('/regist', function(req, res, next) {
             emergency_flag: req.body.emergency ? 1 : 0,
             
         }).then(model => {
-            res.redirect('/information/regist')
+            res.redirect('/information/complete')
         })
     })
     // const data = {}
@@ -53,6 +60,12 @@ router.get('/edit', function(req, res, next) {
 router.post('/edit', function(req, res, next) {
     const data = {}
     res.render('information/edit',data)
+});
+
+// complete
+router.get('/complete', function(req, res, next) {
+    const data = {}
+    res.render('information/complete',data)
 });
 
 module.exports = router;
