@@ -50,8 +50,8 @@
             </tr>
         </thead>
         <% for (const item in list) { %>
-            <tr>
-                <% let obj = list[item] %> 
+            <% let obj = list[item] %> 
+            <tr <% if(obj.status !== 1){ %> class="table-secondary" <% } %> >
                 <td><%= obj.id %></td>
                 <td><%= obj.category %></td>
                 <td><%= obj.title %></td>

@@ -1,6 +1,8 @@
 var express = require('express');
-const db = require('../../../models');
 var router = express.Router();
+const db = require('../../../models');
+const MarkDownIt = require('markdown-it')
+const mdi = new MarkDownIt() 
 
 // sequelize オブジェクト呼び出し
 const Sequelize = require('sequelize');
@@ -133,7 +135,8 @@ router.get('/edit', function(req, res, next) {
         }
         const data = {
             metaData: metaData,
-            post: result[0]
+            post: result[0],
+            renderedMdi: mdi.render(result[0].content)
         }
         res.render('information/edit',data)
     })
