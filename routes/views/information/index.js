@@ -136,7 +136,6 @@ router.get('/edit', function(req, res, next) {
         const data = {
             metaData: metaData,
             post: result[0],
-            renderedMdi: mdi.render(result[0].content)
         }
         res.render('information/edit',data)
     })

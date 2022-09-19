@@ -1,82 +1,89 @@
 <%- include('../components/_header.ejs') %>
 <div class="container w-75 p-3 mt-4">
     <h1 class="mb-5"><%= metaData.h1 %> </h1>
-    <form action="" method="post">
-        <input type="hidden" name="id" value="<%= post.id %>">
-        <div class="custom-control custom-checkbox mb-3">
-            <input 
-                type="checkbox" 
-                name="emergency" 
-                class="custom-control-input" 
-                id="customCheck1" 
-                <% if(post.emergency_flag === 1){ %> checked <% } %>
-            />
-            <label class="custom-control-label" for="customCheck1">緊急フラグ</label>
-        </div>
-        <div class="form-group">
-            <label for="title">タイトル</label>
-            <input 
-                name="title" 
-                type="text" 
-                class="form-control" 
-                id="title" 
-                placeholder="" 
-                value="<%= post.title %>"
-            />
-        </div>
-        <div class="form-group">
-            <p class="mb-2">カテゴリ</p>
-            <select class="custom-select" name="group">
-                <option <% if(post.group_id === ''){ %> selected <% } %>>カテゴリを選択してください</option>
-                <option value="1" <% if(post.group_id === 1){ %> selected <% } %> >リリース</option>
-                <option value="2" <% if(post.group_id === 2){ %> selected <% } %> >イベント</option>
-                <option value="3" <% if(post.group_id === 3){ %> selected <% } %> >社内</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="content">お知らせ内容</label>
-            <textarea 
-                name="content" 
-                class="form-control" 
-                rows="10" 
-                id="content" 
-                placeholder="マークダウン形式でご入力ください"
-            ><%= post.content %></textarea>
-            <button type="button" class="btn btn-outline-secondary my-4" data-toggle="modal" data-target="#exampleModalScrollable">
-                プレビュー表示
-            </button>
-        </div>
+    <div class="card">
+        <div class="card-header">ご入力ください</div>
+        <div class="card-body">
+            <form action="" method="post">
+                <input type="hidden" name="id" value="<%= post.id %>">
+                <div class="custom-control custom-checkbox mb-3">
+                    <input 
+                        type="checkbox" 
+                        name="emergency" 
+                        class="custom-control-input" 
+                        id="customCheck1" 
+                        <% if(post.emergency_flag === 1){ %> checked <% } %>
+                    />
+                    <label class="custom-control-label" for="customCheck1">緊急フラグ</label>
+                </div>
+                <div class="form-group">
+                    <label for="title">タイトル</label>
+                    <input 
+                        name="title" 
+                        type="text" 
+                        class="form-control" 
+                        id="title" 
+                        placeholder="" 
+                        value="<%= post.title %>"
+                        required
+                    />
+                </div>
+                <div class="form-group">
+                    <p class="mb-2">カテゴリ</p>
+                    <select class="custom-select" name="group" required>
+                        <option <% if(post.group_id === ''){ %> selected <% } %> value="">カテゴリを選択してください</option>
+                        <option value="1" <% if(post.group_id === 1){ %> selected <% } %> >リリース</option>
+                        <option value="2" <% if(post.group_id === 2){ %> selected <% } %> >イベント</option>
+                        <option value="3" <% if(post.group_id === 3){ %> selected <% } %> >社内</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="content">お知らせ内容</label>
+                    <textarea 
+                        name="content" 
+                        class="form-control" 
+                        rows="10" 
+                        id="content" 
+                        placeholder="マークダウン形式でご入力ください"
+                        required
+                    ><%= post.content %></textarea>
+                    <button type="button" class="btn btn-outline-secondary my-4" data-toggle="modal" data-target="#exampleModalScrollable">
+                        プレビュー表示
+                    </button>
+                </div>
 
-        <div class="mb-5">
-            <p class="mb-1">公開ステータス</p>
-            <div class="custom-control custom-radio">
-                <input 
-                    type="radio" 
-                    id="customRadio1" 
-                    name="status" 
-                    class="custom-control-input" 
-                    value="1" 
-                    <% if(post.status === 1){ %> checked <% } %> 
-                />
-                <label class="custom-control-label" for="customRadio1">公開</label>
-            </div>
-            <div class="custom-control custom-radio">
-                <input 
-                    type="radio" 
-                    id="customRadio2" 
-                    name="status" 
-                    value="2" 
-                    class="custom-control-input"
-                    <% if(post.status === 2){ %> checked <% } %> 
-                />
-                <label class="custom-control-label" for="customRadio2">非公開</label>
-            </div>
+                <div class="mb-5">
+                    <p class="mb-1">公開ステータス</p>
+                    <div class="custom-control custom-radio">
+                        <input 
+                            type="radio" 
+                            id="customRadio1" 
+                            name="status" 
+                            class="custom-control-input" 
+                            value="1" 
+                            <% if(post.status === 1){ %> checked <% } %> 
+                        />
+                        <label class="custom-control-label" for="customRadio1">公開</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input 
+                            type="radio" 
+                            id="customRadio2" 
+                            name="status" 
+                            value="2" 
+                            class="custom-control-input"
+                            <% if(post.status === 2){ %> checked <% } %> 
+                        />
+                        <label class="custom-control-label" for="customRadio2">非公開</label>
+                    </div>
+                </div>
+                
+                <div class="d-flex justify-content-between w-50">
+                    <button type="submit" class="btn btn-primary">内容を登録する</button>
+                </div>
+            </form>
         </div>
-        
-        <div class="d-flex justify-content-between">
-            <button type="submit" class="btn btn-primary">内容を登録する</button>
-        </div>
-    </form>
+    </div>
 
     <!-- Modal -->
     <div class="modal" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
@@ -88,8 +95,8 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <%- renderedMdi %>
+                <div class="modal-body" id="modal-body">
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
