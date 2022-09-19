@@ -1,14 +1,25 @@
 <%- include('../components/_header.ejs') %>
 <div class="container w-75 p-3 mt-4">
-    <h1>information regist</h1>
+    <h1 class="mb-5"><%= metaData.h1 %> </h1>
     <form action="" method="post">
         <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" name="emergency" class="custom-control-input" id="customCheck1">
+            <input 
+                type="checkbox" 
+                name="emergency" 
+                class="custom-control-input" 
+                id="customCheck1" 
+            />
             <label class="custom-control-label" for="customCheck1">緊急フラグ</label>
         </div>
         <div class="form-group">
             <label for="title">タイトル</label>
-            <input name="title" type="text" class="form-control" id="title" placeholder="">
+            <input 
+                name="title" 
+                type="text" 
+                class="form-control" 
+                id="title" 
+                placeholder="" 
+            />
         </div>
         <div class="form-group">
             <p class="mb-2">カテゴリ</p>
@@ -21,17 +32,36 @@
         </div>
         <div class="form-group">
             <label for="content">お知らせ内容</label>
-            <textarea name="content" class="form-control" rows="10" id="content" placeholder="マークダウン形式でご入力ください"></textarea>
+            <textarea 
+                name="content" 
+                class="form-control" 
+                rows="10" 
+                id="content" 
+                placeholder="マークダウン形式でご入力ください"
+            ></textarea>
         </div>
 
         <div class="mb-5">
             <p class="mb-1">公開ステータス</p>
             <div class="custom-control custom-radio">
-                <input type="radio" id="customRadio1" name="status" class="custom-control-input" value="1" checked>
+                <input 
+                    type="radio" 
+                    id="customRadio1" 
+                    name="status" 
+                    class="custom-control-input" 
+                    value="1" 
+                    checked
+                />
                 <label class="custom-control-label" for="customRadio1">公開</label>
             </div>
             <div class="custom-control custom-radio">
-                <input type="radio" id="customRadio2" name="status" value="2" class="custom-control-input">
+                <input 
+                    type="radio" 
+                    id="customRadio2" 
+                    name="status" 
+                    value="2" 
+                    class="custom-control-input"
+                />
                 <label class="custom-control-label" for="customRadio2">非公開</label>
             </div>
         </div>

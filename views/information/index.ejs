@@ -1,37 +1,37 @@
 <%- include('../components/_header.ejs') %>
 <div class="container mt-5">
     <h1 class="mb-4"><%= metaData.h1 %></h1>
-    <form class=" mb-4">
+    <form class="mb-4" method="post" action="">
         <div class="d-flex form-inline mb-4">
             <div class="input-group mr-4">
                 <div class="input-group-prepend">
                 <span class="input-group-text">ID</span>
                 </div>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="id" value="<% if( postData.id !== '' ){ %><%= postData.id %><% } %>">
             </div>
             <div class="input-group mr-4">
                 <div class="input-group-prepend">
                     <span class="input-group-text">カテゴリ</span>
                 </div>
-                <select class="custom-select">
-                    <option selected></option>
-                    <option value="1">リリース</option>
-                    <option value="2">イベント</option>
-                    <option value="3">社内</option>
+                <select class="custom-select" name="category">
+                    <option <% if( postData.category === '' ){ %> selected <% } %>></option>
+                    <option value="1" <% if( postData.category === '1' ){ %> selected <% } %>>リリース</option>
+                    <option value="2" <% if( postData.category === '2' ){ %> selected <% } %>>イベント</option>
+                    <option value="3" <% if( postData.category === '3' ){ %> selected <% } %>>社内</option>
                 </select>
             </div>
             <div class="input-group mr-4">
                 <div class="input-group-prepend">
                     <span class="input-group-text">公開ステータス</span>
                 </div>
-                <select class="custom-select">
-                    <option selected></option>
-                    <option value="1">公開済み</option>
-                    <option value="2">非公開</option>
+                <select class="custom-select" name="status">
+                    <option <% if( postData.status === '' ){ %> selected <% } %>></option>
+                    <option value="1" <% if( postData.status === '1' ){ %> selected <% } %>>公開済み</option>
+                    <option value="2" <% if( postData.status === '2' ){ %> selected <% } %>>非公開</option>
                 </select>
             </div>
             <div class="custom-control custom-checkbox">
-                <input name="emergency" type="checkbox" class="custom-control-input" id="customCheck1">
+                <input name="emergency" type="checkbox" class="custom-control-input" id="customCheck1" <% if( postData.emergency !== '' ){ %> checked <% } %>>
                 <label class="custom-control-label" for="customCheck1">緊急フラグ</label>
             </div>
         </div>
@@ -53,7 +53,7 @@
             <tr>
                 <% let obj = list[item] %> 
                 <td><%= obj.id %></td>
-                <td><%= obj.group_id %></td>
+                <td><%= obj.category %></td>
                 <td><%= obj.title %></td>
                 <td><%= obj.status === 1 ? '公開済み' : '非公開' %></td>
                 <td <% if (obj.emergency_flag === 1) { %> class="alert alert-danger" <% } %>    
