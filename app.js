@@ -14,6 +14,8 @@ var informationViewsRouter = require('./routes/views/information/index');
 var samplesApiRouter = require('./routes/api/samples');  
 
 var app = express();
+
+// プロキシ設定のsession有効
 app.set("trust proxy", 1);
 
 // session
