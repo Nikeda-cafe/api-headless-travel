@@ -17,8 +17,18 @@ if (config.use_env_variable) {
 
 /* GET users listing. */
 
+// const checkUserSession = (req,res) => {
+//     if(req.session.login !== undefined){
+//         return true
+//     }else{
+//         return false
+//     }
+// }
 // list 
-router.get('/', function(req, res, next) {
+router.get('/',function(req, res, next) {
+    if(!req.isLogin){
+        res.redirect('users/login')
+    }
     const metaData = {
         title:'お知らせ一覧',
         h1: 'お知らせ一覧',
@@ -40,7 +50,8 @@ router.get('/', function(req, res, next) {
             const data = {
                 metaData:metaData,
                 list: result[0],
-                postData: postData
+                postData: postData,
+                userSession: req.session.login
             }
             res.render('information/index',data)
         }
@@ -89,7 +100,8 @@ router.post('/', function(req, res, next) {
             const data = {
                 metaData:metaData,
                 list: result[0],
-                postData: postData
+                postData: postData,
+                userSession: req.session.login
             }
             res.render('information/index',data)
         }

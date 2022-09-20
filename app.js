@@ -14,6 +14,7 @@ var informationViewsRouter = require('./routes/views/information/index');
 var samplesApiRouter = require('./routes/api/samples');  
 
 var app = express();
+app.set("trust proxy", 1);
 
 // session
 const session = require('express-session');
@@ -25,6 +26,16 @@ var sessionOptions = {
   cookie: {maxAge: 60*60*1000}
 }
 app.use(session(sessionOptions));
+
+// session保持チェック middleware
+app.use(function(req, res, next){
+    if(req.session.login !== undefined){
+        req.isLogin = true;
+    }else{
+        req,isLogin = false
+    }
+    next();
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
