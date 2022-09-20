@@ -27,7 +27,7 @@ if (config.use_env_variable) {
 // list 
 router.get('/',function(req, res, next) {
     if(!req.isLogin){
-        res.redirect('users/login')
+        res.redirect('/users/login')
     }
     const metaData = {
         title:'お知らせ一覧',
