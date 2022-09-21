@@ -1,27 +1,27 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
+    "username": "postgres",
+    "password": "postgres",
     "database": "my_db",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
+    "host": "172.28.202.103",
+    "dialect": "postgres",
     "define": { 
 		"charset": "utf8mb4",
         "collate": "utf8mb4_general_ci"
 	}
   },
   "test": {
-    "username": "root",
-    "password": null,
+    "username": "postgres",
+    "password": "postgres",
     "database": "my_db",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "host": "172.28.202.103",
+    "dialect": "postgres"
   },
   "production": {
-    "username": "root",
-    "password": null,
+    "username": "postgres",
+    "password": "postgres",
     "database": "my_db",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "host": "172.28.202.103",
+    "dialect": "postgres"
   }
 }

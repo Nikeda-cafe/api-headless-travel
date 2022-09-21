@@ -65,7 +65,7 @@
                 <td <% if (obj.emergency_flag === 1) { %> class="alert alert-danger" <% } %>    
                 ><%= obj.emergency_flag === 1 ? '緊急':'-' %>
                 </td>
-                <td><%= obj.createdAt %></td>
+                <td><%= obj.created_at %></td>
                 <td>
                     <a href="/information/edit/?id=<%= obj.id %>">
                         <button class="btn btn-outline-secondary">編集する</button>

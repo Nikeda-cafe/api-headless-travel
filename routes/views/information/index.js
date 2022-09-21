@@ -16,16 +16,9 @@ if (config.use_env_variable) {
 }
 
 /* GET users listing. */
-
-// const checkUserSession = (req,res) => {
-//     if(req.session.login !== undefined){
-//         return true
-//     }else{
-//         return false
-//     }
-// }
 // list 
 router.get('/',function(req, res, next) {
+    console.log(req.isLogin);
     if(!req.isLogin){
         res.redirect('/users/login')
     }
@@ -42,7 +35,8 @@ router.get('/',function(req, res, next) {
     }
 
     // columns
-    const columns = ["i.id", "ic.name as category", "i.title", "i.status", "i.emergency_flag", "DATE_FORMAT(i.createdAt, '%Y年%m月%d日') as createdAt"] 
+    const queryDate = `to_char(i."createdAt",'Y年m月d日') as createdAt`
+    const columns = ["i.id", "ic.name as category", "i.title", "i.status", "i.emergency_flag", queryDate]
     // join
     const join = ["inner join information_categories as ic on i.group_id = ic.id"]
     sequelize.query(`select ${columns.join(',')} from information as i ${join.join(' ')}`)
@@ -92,7 +86,8 @@ router.post('/', function(req, res, next) {
         where.push(`i.emergency_flag = ${emergency}`)
     }
     // columns
-    const columns = ["i.id", "ic.name as category", "i.title", "i.status", "i.emergency_flag", "DATE_FORMAT(i.createdAt, '%Y年%m月%d日') as createdAt"] 
+    const queryDate = `to_char(i."createdAt",'Y年m月d日') as createdAt`
+    const columns = ["i.id", "ic.name as category", "i.title", "i.status", "i.emergency_flag", queryDate]  
     // join
     const join = ["inner join information_categories as ic on i.group_id = ic.id"]
     sequelize.query(`SELECT ${columns.join(',')} FROM information as i ${join.join(' ')} WHERE ${where.join(' AND ')}`)
