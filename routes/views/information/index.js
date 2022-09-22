@@ -19,9 +19,9 @@ if (config.use_env_variable) {
 // list 
 router.get('/',function(req, res, next) {
     console.log(req.isLogin);
-    // if(!req.isLogin){
-    //     res.redirect('/users/login')
-    // }
+    if(!req.isLogin){
+        res.redirect('/users/login')
+    }
     const metaData = {
         title:'お知らせ一覧',
         h1: 'お知らせ一覧',
@@ -131,7 +131,7 @@ router.post('/regist', function(req, res, next) {
             content: req.body.content,
             status: req.body.status,
             emergency_flag: req.body.emergency ? 1 : 0,
-            
+            delete_flag: 0
         }).then(model => {
             res.redirect('/information/complete')
         })
