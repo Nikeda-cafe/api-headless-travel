@@ -19,9 +19,9 @@ if (config.use_env_variable) {
 // list 
 router.get('/',function(req, res, next) {
     console.log(req.isLogin);
-    if(!req.isLogin){
-        res.redirect('/users/login')
-    }
+    // if(!req.isLogin){
+    //     res.redirect('/users/login')
+    // }
     const metaData = {
         title:'お知らせ一覧',
         h1: 'お知らせ一覧',
@@ -35,7 +35,7 @@ router.get('/',function(req, res, next) {
     }
 
     // columns
-    const queryDate = `to_char(i."createdAt",'Y年m月d日') as createdAt`
+    const queryDate = `to_char(i."createdAt",'yyyy年mm月dd日') as "createdAt"`
     const columns = ["i.id", "ic.name as category", "i.title", "i.status", "i.emergency_flag", queryDate]
     // join
     const join = ["inner join information_categories as ic on i.group_id = ic.id"]
@@ -88,7 +88,7 @@ router.post('/', function(req, res, next) {
         where.push(`i.emergency_flag = ${emergency}`)
     }
     // columns
-    const queryDate = `to_char(i."createdAt",'Y年m月d日') as createdAt`
+    const queryDate = `to_char(i."createdAt",'yyyy年mm月dd日') as "createdAt"`
     const columns = ["i.id", "ic.name as category", "i.title", "i.status", "i.emergency_flag", queryDate]  
     // join
     const join = ["inner join information_categories as ic on i.group_id = ic.id"]

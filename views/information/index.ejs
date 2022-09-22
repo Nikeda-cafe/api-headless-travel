@@ -1,7 +1,7 @@
 <%- include('../components/_header.ejs') %>
 <%- include('../components/_sidenav.ejs') %>
 <div class="container mt-5 mx-5">
-    <%- JSON.stringify(userSession) %> 
+    <!-- <%- JSON.stringify(userSession) %>  -->
     <h1 class="mb-4"><%= metaData.h1 %></h1>
     <form class="mb-4" method="post" action="">
         <div class="d-flex form-inline mb-4">
@@ -66,7 +66,7 @@
                 <td <% if (obj.emergency_flag === 1) { %> class="alert alert-danger" <% } %>    
                 ><%= obj.emergency_flag === 1 ? '緊急':'-' %>
                 </td>
-                <td><%= obj.created_at %></td>
+                <td><%= obj.createdAt %></td>
                 <td>
                     <a href="/information/edit/?id=<%= obj.id %>">
                         <button class="btn btn-outline-secondary">編集する</button>
