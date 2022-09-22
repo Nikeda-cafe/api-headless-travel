@@ -1,4 +1,5 @@
 # Headless Travel api連携用アプリケーション
+※現在はお知らせ情報のみを管理
 
 ## 使用技術
 * Express.js
