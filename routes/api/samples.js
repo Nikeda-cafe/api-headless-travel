@@ -6,21 +6,28 @@ var router = express.Router();
  * JSON形式で文字列を返す。
  */
 
-const mysql = require('mysql')
-const connection = mysql.createConnection({
+var { Client } = require('pg');
+var client = new Client({
+    user: 'postgres',
     host: 'localhost',
-    port: 3306,
-    user: 'root',
-    password: '',
-    database: 'my_db'
-});
+    database: 'my_db',
+    password: 'postgres',
+    port: 5432
+})
+ 
+client.connect()
 
 router.get('/', function(req, res, next) {
-    connection.query(
-      "SELECT id,name,memo, DATE_FORMAT(created_at, '%Y年%m月%d日') as created_at FROM memo",
-      (error, results) => {
-        res.header('Content-Type', 'application/json; charset=utf-8')
-        res.send(results);
+    const query = {
+        text: 'select * from information_categories',
+    }
+    client.query(query, (error, result) => {
+        if(error){
+
+        }else{
+            res.header('Content-Type', 'application/json; charset=utf-8')
+            res.send(result.rows);
+        }
       }
     );
 });

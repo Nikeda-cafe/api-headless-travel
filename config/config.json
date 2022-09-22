@@ -3,7 +3,7 @@
     "username": "postgres",
     "password": "postgres",
     "database": "my_db",
-    "host": "172.28.202.103",
+    "host": "localhost",
     "dialect": "postgres",
     "define": { 
 		"charset": "utf8mb4",
@@ -14,14 +14,14 @@
     "username": "postgres",
     "password": "postgres",
     "database": "my_db",
-    "host": "172.28.202.103",
+    "host": "localhost",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
     "password": "postgres",
     "database": "my_db",
-    "host": "172.28.202.103",
+    "host": "localhost",
     "dialect": "postgres"
   }
 }

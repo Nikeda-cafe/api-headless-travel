@@ -1,5 +1,6 @@
 <%- include('../components/_header.ejs') %>
-<div class="container mt-5">
+<%- include('../components/_sidenav.ejs') %>
+<div class="container mt-5 mx-5">
     <%- JSON.stringify(userSession) %> 
     <h1 class="mb-4"><%= metaData.h1 %></h1>
     <form class="mb-4" method="post" action="">

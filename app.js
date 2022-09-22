@@ -7,7 +7,6 @@ var logger = require('morgan');
 // views router
 var indexRouter = require('./routes/views/index');
 var usersRouter = require('./routes/views/users');
-var helloViewsRouter = require('./routes/views/hello/index');
 var informationViewsRouter = require('./routes/views/information/index');
 
 // api router
@@ -17,6 +16,13 @@ var app = express();
 
 // プロキシ設定のsession有効
 app.set("trust proxy", 1);
+
+// cors
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 // session
 const session = require('express-session');
@@ -52,7 +58,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 // views route
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/hello', helloViewsRouter);
 app.use('/information', informationViewsRouter);
 
 // api route

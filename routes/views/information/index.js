@@ -54,7 +54,9 @@ router.get('/',function(req, res, next) {
 
 // list 
 router.post('/', function(req, res, next) {
-
+    if(!req.isLogin){
+        res.redirect('/users/login')
+    }
     const id = req.body.id ? req.body.id : ''
     const category = req.body.category ? req.body.category : ''
     const status = req.body.status ? req.body.status : ''
@@ -105,6 +107,9 @@ router.post('/', function(req, res, next) {
 
 // regist
 router.get('/regist', function(req, res, next) {
+    if(!req.isLogin){
+        res.redirect('/users/login')
+    }
     const metaData = {
         title:'お知らせ登録',
         h1: 'お知らせ登録',
@@ -116,6 +121,9 @@ router.get('/regist', function(req, res, next) {
 });
 
 router.post('/regist', function(req, res, next) {
+    if(!req.isLogin){
+        res.redirect('/users/login')
+    }
     db.sequelize.sync().then(() => {
         db.information.create({
             title: req.body.title,
@@ -134,6 +142,9 @@ router.post('/regist', function(req, res, next) {
 
 // edit
 router.get('/edit', function(req, res, next) {
+    if(!req.isLogin){
+        res.redirect('/users/login')
+    }
     const queryId = req.query.id ? req.query.id : ''
     db.information.findAll({ where: { id: queryId } }).then(result => {
         const metaData = {
@@ -151,6 +162,9 @@ router.get('/edit', function(req, res, next) {
 });
 
 router.post('/edit', function(req, res, next) {
+    if(!req.isLogin){
+        res.redirect('/users/login')
+    }
     const queryId = req.query.id ? req.query.id : ''
     db.sequelize.sync().then(() => {
         db.information.update(
