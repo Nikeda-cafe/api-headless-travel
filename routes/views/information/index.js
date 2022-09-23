@@ -35,7 +35,7 @@ router.get('/',function(req, res, next) {
     }
 
     // columns
-    const queryDate = `to_char(i."createdAt",'yyyy年mm月dd日') as "createdAt"`
+    const queryDate = `DATE_FORMAT(i.createdAt,'%Y/%m/%d') as createdAt`
     const columns = ["i.id", "ic.name as category", "i.title", "i.status", "i.emergency_flag", queryDate]
     // join
     const join = ["inner join information_categories as ic on i.group_id = ic.id"]
@@ -88,7 +88,7 @@ router.post('/', function(req, res, next) {
         where.push(`i.emergency_flag = ${emergency}`)
     }
     // columns
-    const queryDate = `to_char(i."createdAt",'yyyy年mm月dd日') as "createdAt"`
+    const queryDate = `DATE_FORMAT(i.createdAt,'%Y/%m/%d') as createdAt`
     const columns = ["i.id", "ic.name as category", "i.title", "i.status", "i.emergency_flag", queryDate]  
     // join
     const join = ["inner join information_categories as ic on i.group_id = ic.id"]

@@ -18,7 +18,7 @@ router.get('/',function(req, res, next) {
     const id = req.query.id ?? ''
 
     // columns
-    const queryDate = `to_char(i."createdAt",'yyyy.mm.dd') as "createdAt"`
+    const queryDate = `DATE_FORMAT(i.createdAt,'%Y.%m.%d') as createdAt`
     const columns = ["i.id", "i.content", "ic.name as category", "i.title", "i.status", "i.emergency_flag", queryDate]
 
     // join
