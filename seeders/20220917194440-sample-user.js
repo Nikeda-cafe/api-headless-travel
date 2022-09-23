@@ -14,37 +14,14 @@ module.exports = {
 
     return queryInterface.bulkInsert('Users',[
       {
-        name: 'Taro',
-        pass: 'yamada',
-        mail: 'taro@yamada.jp',
-        age: 39,
+        name: 'n-ikeda',
+        pass: '4104',
+        mail: '4104@gmail.com',
+        age: 30,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
-      {
-        name: 'Hanako',
-        pass: 'flower',
-        mail: 'hanako@flower.jp',
-        age: 25,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: 'Tiru',
-        pass: 'kasai',
-        mail: 'tiru@kasai.jp',
-        age: 56,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: 'hina',
-        pass: 'takahashi',
-        mail: 'hina@takahashi.jp',
-        age: 21,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
+      
     ])
   },
 
