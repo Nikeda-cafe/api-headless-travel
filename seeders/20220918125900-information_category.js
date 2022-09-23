@@ -13,21 +13,18 @@ module.exports = {
     */
      return queryInterface.bulkInsert('information_categories',[
         {
-            id:1,
             name: 'リリース',
             delete_flag: 0,
             createdAt: new Date(),
             updatedAt: new Date(),
         },
         {
-            id:2,
             name: 'イベント',
             delete_flag: 0,
             createdAt: new Date(),
             updatedAt: new Date(),
         },
         {
-            id:3,
             name: '社内',
             delete_flag: 0,
             createdAt: new Date(),
