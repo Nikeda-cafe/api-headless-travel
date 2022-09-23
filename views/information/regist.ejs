@@ -1,0 +1,106 @@
+<%- include('../components/_header.ejs') %>
+<%- include('../components/_sidenav.ejs') %>
+<div class="container w-75 p-3 mt-4">
+    <h1 class="mb-5"><%= metaData.h1 %> </h1>
+    <div class="card">
+        <div class="card-header">ご入力ください</div>
+        <div class="card-body">
+            <form action="" method="post">
+                <div class="custom-control custom-checkbox mb-3">
+                    <input 
+                        type="checkbox" 
+                        name="emergency" 
+                        class="custom-control-input" 
+                        id="customCheck1" 
+                    />
+                    <label class="custom-control-label" for="customCheck1">緊急フラグ</label>
+                </div>
+                <div class="form-group">
+                    <label for="title">タイトル</label>
+                    <input 
+                        name="title" 
+                        type="text" 
+                        class="form-control" 
+                        id="title" 
+                        placeholder="" 
+                        required
+                    />
+                </div>
+                <div class="form-group">
+                    <p class="mb-2">カテゴリ</p>
+                    <select class="custom-select" name="group" required>
+                        <option selected value="">カテゴリを選択してください</option>
+                        <option value="1">リリース</option>
+                        <option value="2">イベント</option>
+                        <option value="3">社内</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="content">お知らせ内容</label>
+                    <textarea 
+                        name="content" 
+                        class="form-control" 
+                        rows="10" 
+                        id="content" 
+                        placeholder="マークダウン形式でご入力ください"
+                        required
+                    ></textarea>
+                    <button type="button" class="btn btn-outline-secondary my-4" data-toggle="modal" data-target="#exampleModalScrollable">
+                        プレビュー表示
+                    </button>
+                </div>
+
+                <div class="mb-5">
+                    <p class="mb-1">公開ステータス</p>
+                    <div class="custom-control custom-radio">
+                        <input 
+                            type="radio" 
+                            id="customRadio1" 
+                            name="status" 
+                            class="custom-control-input" 
+                            value="1" 
+                            checked
+                        />
+                        <label class="custom-control-label" for="customRadio1">公開</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input 
+                            type="radio" 
+                            id="customRadio2" 
+                            name="status" 
+                            value="2" 
+                            class="custom-control-input"
+                        />
+                        <label class="custom-control-label" for="customRadio2">非公開</label>
+                    </div>
+                </div>
+                
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary">内容を登録する</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenteredLabel">プレビュー表示</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/common.js"></script>
+<%- include('../components/_footer.ejs') %>
