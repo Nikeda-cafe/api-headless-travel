@@ -35,7 +35,6 @@ router.get('/',function(req, res, next) {
     where.push(`i.delete_flag = 0`);
     where.push(`i.status = 1`);
     if(id !== ''){
-        console.log(id);
         where.push(`i.id = ${id}`)
     }
     sequelize.query(

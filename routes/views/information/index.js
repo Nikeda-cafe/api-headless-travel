@@ -18,7 +18,6 @@ if (config.use_env_variable) {
 /* GET users listing. */
 // list 
 router.get('/',function(req, res, next) {
-    console.log(req.isLogin);
     if(!req.isLogin){
         res.redirect('/users/login')
     }
