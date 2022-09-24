@@ -1,3 +1,4 @@
+require('dotenv').config()
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -11,7 +12,8 @@ var informationViewsRouter = require('./routes/views/information/index');
 
 // api router
 var samplesApiRouter = require('./routes/api/samples');  
-var informationApiRouter = require('./routes/api/information');  
+var informationApiRouter = require('./routes/api/information'); 
+var sendmailApiRouter = require('./routes/api/sendmail');  
 
 var app = express();
 
@@ -64,6 +66,7 @@ app.use('/information', informationViewsRouter);
 // api route
 app.use('/api/v1/samples', samplesApiRouter);
 app.use('/api/v1/information', informationApiRouter);
+app.use('/api/v1/sendmail', sendmailApiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
