@@ -5,6 +5,7 @@
 * Express.js
 * Nginx
 * MariaDB
+* webpack5
 * Bootstrap4
 * AWS Lightsail
 * AWS CloudFront
