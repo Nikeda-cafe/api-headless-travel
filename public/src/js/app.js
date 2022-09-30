@@ -13,3 +13,6 @@ const coupon = 300;
 const totalPrice = add(item1Price,item2Price);
 const priceAfterApplyCoupon = substr(totalPrice,coupon);
 
+// $(function(){
+//     $('.xxx').text(priceAfterApplyCoupon + '円');
+// })
