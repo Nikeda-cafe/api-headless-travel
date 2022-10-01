@@ -14,6 +14,7 @@ var informationViewsRouter = require('./routes/views/information/index');
 var samplesApiRouter = require('./routes/api/samples');  
 var informationApiRouter = require('./routes/api/information'); 
 var sendmailApiRouter = require('./routes/api/sendmail');  
+var authApiRouter = require('./routes/api/auth');  
 
 var app = express();
 
@@ -67,6 +68,7 @@ app.use('/information', informationViewsRouter);
 app.use('/api/v1/samples', samplesApiRouter);
 app.use('/api/v1/information', informationApiRouter);
 app.use('/api/v1/sendmail', sendmailApiRouter);
+app.use('/api/v1/auth', authApiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
