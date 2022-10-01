@@ -1,9 +1,11 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
     watch: true,
-    mode: 'development',
+    mode: 'production',
     entry: {
         main: './public/src/js/app.js',
     },
@@ -13,7 +15,7 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'stylesheets/bundle.css',
+            filename: 'stylesheets/bundle.min.css',
         })
     ],
     module: {
@@ -28,6 +30,12 @@ module.exports = {
                     "sass-loader"
                 ],
             },
+        ],
+    },
+    optimization: {
+        minimizer: [
+            new TerserPlugin(), 
+            new CssMinimizerPlugin(),
         ],
     },
 }
