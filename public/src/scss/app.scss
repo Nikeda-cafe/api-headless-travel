@@ -1,8 +1,7 @@
-/*
-Bootstrap の変数をここで上書きします
-ここで値をセットした変数は、Bootstrap 側で上書きされなくなります。
-*/
+@import './variables';
 
+.xxx{
+    background-color: $black;
+    color: $white;
+}
 
-/* Bootstrap を読み込みます */
-@import "node_modules/bootstrap/scss/bootstrap";
