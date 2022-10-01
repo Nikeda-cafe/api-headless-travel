@@ -16,7 +16,8 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: 'stylesheets/bundle.min.css',
-        })
+        }),
+        require('autoprefixer')
     ],
     module: {
         rules: [
@@ -27,6 +28,7 @@ module.exports = {
                     MiniCssExtractPlugin.loader,
                     // "style-loader",
                     "css-loader",
+                    'postcss-loader',
                     "sass-loader"
                 ],
             },
