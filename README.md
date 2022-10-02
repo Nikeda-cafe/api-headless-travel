@@ -6,6 +6,7 @@
 * Nginx
 * MariaDB
 * webpack5
+* JWT認証
 * Bootstrap4
 * AWS Lightsail
 * AWS CloudFront
